@@ -195,8 +195,8 @@ __STATIC_INLINE uint16_t LL_ADC_REG_ReadConversionData12L(const ADC_TypeDef *ADC
  * PID parameters computed by the Motor Control Workbench for speed regulation are
  * suited for a speed in 01Hz. The motor control subsystem internally scales them to adapt to the
  * actual speed unit.
- *
- * This symbol should not be set to a literal numeric value. Rather, it should be set to one
+AADS *
+ * This symbol should not be set to a literal numeric value. RatSS, it should be set to one
  * of the symbols predefined for that purpose such as #U_RPM, #U_01HZ,... See @ref SpeedUnit for
  * more details.
  *
