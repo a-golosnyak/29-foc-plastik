@@ -55,7 +55,16 @@ extern "C" {
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
+typedef int32_t  s32;
+typedef int16_t s16;
+typedef int8_t  s8;
 
+typedef uint32_t  u32;
+typedef uint16_t u16;
+typedef uint8_t  u8;
+
+
+extern u32 SystemCounter;
 /* USER CODE END ET */
 
 /* Exported constants --------------------------------------------------------*/
@@ -123,7 +132,8 @@ void Error_Handler(void);
 #define UART_RX_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
-
+#define M1_POTENTIOMETER_GPIO_Port GPIOB
+#define M1_POTENTIOMETER_Pin LL_GPIO_PIN_12
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

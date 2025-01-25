@@ -103,11 +103,11 @@
 #define SPEED_LOOP_FREQUENCY_HZ             (uint16_t)1000 /*!<Execution rate of speed regulation loop (Hz) */
 
 /* Speed PID parameter dividers */
-#define SP_KPDIV                            4096
-#define SP_KIDIV                            16384
+#define SP_KPDIV                            512
+#define SP_KIDIV                            4096
 #define SP_KDDIV                            16
-#define SP_KPDIV_LOG                        LOG2((4096))
-#define SP_KIDIV_LOG                        LOG2((16384))
+#define SP_KPDIV_LOG                        LOG2((512))
+#define SP_KIDIV_LOG                        LOG2((8192))
 #define SP_KDDIV_LOG                        LOG2((16))
 
 /* USER CODE BEGIN PID_SPEED_INTEGRAL_INIT_DIV */
@@ -118,7 +118,7 @@
 #define IQMAX_A                             5
 
 /* Default settings */
-#define DEFAULT_CONTROL_MODE                MCM_SPEED_MODE
+#define DEFAULT_CONTROL_MODE                MCM_TORQUE_MODE
 #define DEFAULT_TARGET_SPEED_RPM            3143
 #define DEFAULT_TARGET_SPEED_UNIT           (DEFAULT_TARGET_SPEED_RPM*SPEED_UNIT/U_RPM)
 #define DEFAULT_TORQUE_COMPONENT_A          0
@@ -143,13 +143,13 @@
 /******************************   START-UP PARAMETERS   **********************/
 
 /* Phase 1 */
-#define PHASE1_DURATION                     1000 /*milliseconds */
-#define PHASE1_FINAL_SPEED_UNIT             (0*SPEED_UNIT/U_RPM)
+#define PHASE1_DURATION                     250 /*milliseconds */
+#define PHASE1_FINAL_SPEED_UNIT             (1500*SPEED_UNIT/U_RPM)
 #define PHASE1_FINAL_CURRENT_A              5
 
 /* Phase 2 */
-#define PHASE2_DURATION                     6984 /*milliseconds */
-#define PHASE2_FINAL_SPEED_UNIT             (3492*SPEED_UNIT/U_RPM)
+#define PHASE2_DURATION                     500 /*milliseconds */
+#define PHASE2_FINAL_SPEED_UNIT             (3500*SPEED_UNIT/U_RPM)
 #define PHASE2_FINAL_CURRENT_A              5
 
 /* Phase 3 */

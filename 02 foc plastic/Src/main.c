@@ -18,6 +18,8 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "workspace.h"
+#include "led_module.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -118,7 +120,8 @@ int main(void)
   /* Initialize interrupts */
   MX_NVIC_Init();
   /* USER CODE BEGIN 2 */
-
+	LED_Init();
+	WKSPC_Init();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -126,7 +129,8 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
+		LED_Processing();
+		WKSPC_Processing();
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -240,6 +244,8 @@ static void MX_ADC1_Init(void)
   PA2   ------> ADC1_IN3
   PB1   ------> ADC1_IN12
   PB14   ------> ADC1_IN5
+	
+	PB11   ------> ADC1_IN11 user
   */
   GPIO_InitStruct.Pin = M1_BUS_VOLTAGE_Pin;
   GPIO_InitStruct.Mode = LL_GPIO_MODE_ANALOG;
@@ -263,6 +269,11 @@ static void MX_ADC1_Init(void)
 
   /* USER CODE BEGIN ADC1_Init 1 */
 
+	GPIO_InitStruct.Pin = M1_POTENTIOMETER_Pin;
+  GPIO_InitStruct.Mode = LL_GPIO_MODE_ANALOG;
+  GPIO_InitStruct.Pull = LL_GPIO_PULL_NO;
+  LL_GPIO_Init(M1_POTENTIOMETER_GPIO_Port, &GPIO_InitStruct);
+	
   /* USER CODE END ADC1_Init 1 */
 
   /** Common config
@@ -333,6 +344,10 @@ static void MX_ADC1_Init(void)
   LL_ADC_SetChannelSingleDiff(ADC1, LL_ADC_CHANNEL_5, LL_ADC_SINGLE_ENDED);
   /* USER CODE BEGIN ADC1_Init 2 */
 
+	LL_ADC_REG_SetSequencerRanks(ADC1, LL_ADC_REG_RANK_3, LL_ADC_CHANNEL_11);
+  LL_ADC_SetChannelSamplingTime(ADC1, LL_ADC_CHANNEL_11, LL_ADC_SAMPLINGTIME_247CYCLES_5);
+  LL_ADC_SetChannelSingleDiff(ADC1, LL_ADC_CHANNEL_11, LL_ADC_SINGLE_ENDED);
+	
   /* USER CODE END ADC1_Init 2 */
 
 }

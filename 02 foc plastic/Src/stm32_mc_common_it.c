@@ -35,7 +35,7 @@
 #include "mcp_config.h"
 
 /* USER CODE BEGIN Includes */
-
+#include "main.h"
 /* USER CODE END Includes */
 
 /** @addtogroup MCSDK
@@ -53,7 +53,7 @@
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 bool bdmaActivTc = false;
-
+u32 SystemCounter;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 /* USER CODE END PRIVATE */
@@ -197,7 +197,7 @@ static uint8_t SystickDividerCounter = SYSTICK_DIVIDER;
     /* Nothing to do */
   }
   /* USER CODE BEGIN SysTick_IRQn 1 */
-
+	SystemCounter++;
   /* USER CODE END SysTick_IRQn 1 */
 
     MC_RunMotorControlTasks();
